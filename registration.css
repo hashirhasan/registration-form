@@ -1,0 +1,15 @@
+    
+table{
+    font-family: Calibri; 
+    color:white; 
+    font-size: 11pt; 
+    font-style: normal;
+    font-weight: bold;
+     
+    background-color: SlateBlue; 
+    border-collapse: collapse; 
+    
+  }
+  table.inner{
+    border: 0px
+  }
