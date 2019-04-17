@@ -1,6 +1,6 @@
     <?php include "connect.php"  ?>
 <?php 
-if(isset($_POST['submit']))
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
   $post= $_POST['Post'];
   $first_name=$_POST['First_Name'];
@@ -15,16 +15,11 @@ if(isset($_POST['submit']))
   $alt_contact_no=$_POST['alt_Mobile_Number'];
   $email=$_POST['Email_Id'];
   $permanent_address=$_POST['Address'];
+  $gender=$_POST['gender'];
 
-  $b_day=$_POST['Birthday_day'];
-  $b_month=$_POST['Birthday_Month'];
-  $b_year=$_POST['Birthday_Year'];
-  $date_of_birth="$b_month/$b_day/$b_year";
-
-  $m_day=$_POST['marriage_day'];
-  $m_month=$_POST['marriage_Month'];
-  $m_year=$_POST['marriage_Year'];
-  $married="$m_month/$m_day/$m_year";
+  $date_of_birth= $_POST['Birthday_day'];;
+ 
+  $married=$_POST['marriage_day'];
 
   $njournal=$_POST['njournal'];
   $injournal=$_POST['injournal'];
@@ -74,8 +69,113 @@ if(isset($_POST['submit']))
   $yearofpassing_other=$_POST['Year_of_passing_other'];
   $medofins_other=$_POST['medium_of_instruction_other'];
   $marks_other=$_POST['Percentage_other'];
-    
-    if(!empty($_POST['Post']) and !empty($_POST['First_Name'])  and !empty($_POST['fname']) and !empty($_POST['caste']) and !empty($_POST['cpAddress']) and !empty($_POST['Mobile_Number']) and !empty($_POST['Email_Id']) and !empty($_POST['Address'])and !empty($_POST['Birthday_day']) and !empty($_POST['Birthday_Month']) and !empty($_POST['Birthday_Year'])) //and !empty($_POST['njournal'])  and !empty($_POST['injournal'])  and !empty($_POST['nconference'])  and !empty($_POST['inconference']) and !empty($_POST['teaching']) and !empty($_POST['corporate']))
+  
+  $error;
+
+  if(empty($post))
+  {
+    $error['post'] = 'post cannot be empty';
+  }
+  else if(!preg_match('/^[A-z ]+$/',$post))
+  {
+    $error['post'] = 'Invalid post';
+  }
+
+  if(empty($first_name))
+  {
+    $error['name'] = 'Name cannot be empty';
+  }
+  else if(!preg_match('/^[A-z ]+$/',$first_name))
+  {
+    $error['name'] = 'Invalid name';
+  }
+  
+  if(empty($father_name))
+  {
+    $error['fname'] = 'Name cannot be empty';
+  }
+  else if(!preg_match('/^[A-z ]+$/',$father_name))
+  {
+    $error['fname'] = 'Invalid name';
+  }
+
+  
+  if(!empty($spouse_name))
+  {
+     if(!preg_match('/^[A-z ]+$/',$spouse_name))
+      {
+        $error['spname'] = 'spouse name not valid';
+      }
+  }
+
+
+  if(empty($email))
+  {
+    $error['email'] = 'Email cannot be empty';
+  }
+  else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+  {
+    $error['email'] = 'Invalid email';
+  }
+
+  if(empty($contact))
+  {
+    $error['contact'] = 'Contact cannot be empty';
+  }
+  else if(!preg_match('/([6-9]{1}[0-9]{9})/', $contact))
+  {
+    $error['contact'] = 'Invalid contact number';
+  }
+
+
+    if(!empty($alt_contact_no))
+    {
+      if(!preg_match('/([6-9]{1}[0-9]{9})/', $alt_contact_no))
+        {
+          $error['contact'] = 'Invalid contact number';
+        }
+   }
+
+  
+  if(empty($corresponding_address))
+  {
+    $error['cpaddress'] = 'Address field cannot be empty';
+  }
+
+
+  if(empty($permanent_address))
+  {
+    $error['paddress'] = 'Address field cannot be empty';
+  }
+
+
+  if(empty($date_of_birth))
+  {
+    $error['birth'] = 'date of birth cannot be empty';
+  }
+
+  if(!empty($spouse_name) and preg_match('/^[A-z ]+$/',$spouse_name))
+  {
+    if(empty($date_of_marriage))
+    {
+      $error['marriage'] = 'date of marriage cannot be empty';
+    }
+  }
+
+
+  if(empty($_POST['college_name10']) || !empty($_POST['Year_of_passing10'])  || !empty($_POST['Board_name10']) || empty($_POST['mode10']) || empty($_POST['medium_of_instruction10']) || empty($_POST['Percentage10']) || empty($_POST['college_name12']) || empty($_POST['Year_of_passing12'])  || empty($_POST['Board_name12']) || empty($_POST['mode12']) || empty($_POST['medium_of_instruction12']) || empty($_POST['Percentage12']) || empty($_POST['college_name_grad']) || empty($_POST['Year_of_passing_grad']) || empty($_POST['Board_name_grad'])|| empty($_POST['mode_grad']) || empty($_POST['medium_of_instruction_grad']) || empty($_POST['Percentage_grad']))
+      {
+        $error['qualification']="**Please Fill UP All The Mandatory Details";
+      }
+
+if(isset($error['email']) || isset($error['name']) || isset($error['contact']) || isset($error['birth']) || isset($error['marriage']) || isset($error['qualification']))
+		{
+      $error['status'] = 1;
+ 
+		}
+
+else{
+    if(!empty($_POST['Post']) and !empty($_POST['First_Name'])  and !empty($_POST['fname']) and !empty($_POST['caste']) and !empty($_POST['cpAddress']) and !empty($_POST['Mobile_Number']) and !empty($_POST['gender']) and !empty($_POST['Email_Id']) and !empty($_POST['Address'])and !empty($_POST['Birthday_day'])) //and !empty($_POST['njournal'])  and !empty($_POST['injournal'])  and !empty($_POST['nconference'])  and !empty($_POST['inconference']) and !empty($_POST['teaching']) and !empty($_POST['corporate']))
     { 
       if(!empty($_POST['college_name10']) and !empty($_POST['Year_of_passing10'])  and !empty($_POST['Board_name10']) and !empty($_POST['mode10']) and !empty($_POST['medium_of_instruction10']) and !empty($_POST['Percentage10']))
       {
@@ -84,8 +184,8 @@ if(isset($_POST['submit']))
         {  
           if(!empty($_POST['college_name_grad']) and !empty($_POST['Year_of_passing_grad'])  and !empty($_POST['Board_name_grad']) and !empty($_POST['mode_grad']) and !empty($_POST['medium_of_instruction_grad']) and !empty($_POST['Percentage_grad']))
           { 
-              $query="INSERT INTO users(post,urname,fathername,spousename,category,correspondenceaddress,contactno,alternativecontactno,email,permanentaddress,dateofbirth,dateofmarriage,national_journal,international_journal,national_conference,international_conference,teachingexperience ,corporateexperience) "; 
-              $query .="VALUES('$post','$name','$father_name','$spouse_name','$cast','$corresponding_address',' $contact','$alt_contact_no','$email','$permanent_address','$date_of_birth',' $married','$njournal','$injournal','$nconference','$inconference','$teaching_exp','$corporate_exp')";
+              $query="INSERT INTO users(post,urname,fathername,spousename,category,gender,correspondenceaddress,contactno,alternativecontactno,email,permanentaddress,dateofbirth,dateofmarriage,national_journal,international_journal,national_conference,international_conference,teachingexperience ,corporateexperience) "; 
+              $query .="VALUES('$post','$name','$father_name','$spouse_name','$cast','$gender','$corresponding_address',' $contact','$alt_contact_no','$email','$permanent_address','$date_of_birth',' $married','$njournal','$injournal','$nconference','$inconference','$teaching_exp','$corporate_exp')";
               $result=mysqli_query($connection,$query);
               if(!$result){
               die("query failed". mysqli_error($connection));
@@ -169,6 +269,8 @@ if(isset($_POST['submit']))
   else{
     echo "fill all the mandatory entries";
   } 
+}
+	echo json_encode($error);
 }
 
 ?>
