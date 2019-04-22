@@ -6,12 +6,17 @@
 <head>
 <!-- <script src="jquery.min.js" type="text/javascript"></script> -->
     <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+    <style>
+   @import url('https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800,900');
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./registration.css">
+    <link rel="stylesheet" href="./css/registration.css">
    <style>
    span{
            color:red;
+           font-size:15.36px;
    }
+  
    </style>
     
     <title>Registration</title>
@@ -19,11 +24,11 @@
 
 <body>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <script src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/validation.js"></script>
 
-   <script src="jquery.min.js"></script>
-  <script type="text/javascript" src="validation.js"></script>
-
-<div class="header">
+<div id="scroll" class="header">
 
 
     <h1>Registration</h1>
@@ -115,7 +120,7 @@
                    </div>
                   
                    <div class="form-group col-md-4">
-                        <p>Gender</p>
+                        <p style="font-weight:600;color:#333333">Gender</p>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" name="gender" value="male" class="custom-control-input" checked>
                             <label class="custom-control-label" for="customRadioInline1">Male</label>
@@ -144,21 +149,11 @@
                        
                     </div>
                     <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <p id="para2">Relationship</p>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline3" name="customRadioInline3" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline3">Married</label>
-                                  </div>
-                                  <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline4" name="customRadioInline3" class="custom-control-input">
-                                    <label class="custom-control-label" for="customRadioInline4">Un-Married</label>
-                                  </div>
-                            </div>
+                           
                             <span id=""></span>
                             <div class="form-group col-md-4">
                                     <label for="inputDate">Date of Marriage</label>
-                                    <input type="date" name="marriage_day" id="marriage" max="3000-12-31" 
+                                    <input type="date" name="marriage_day" id="marriage"  
                                            min="1000-01-01" class="form-control">
                                            <span id="err_marriage"></span>
                                    </div>
@@ -167,21 +162,23 @@
                         </div>
                         <br>
                         <br>
+
+                        
                      
-                            <p class="para">Qualifications</p>
+                            <p style="font-weight:600" class="para">Qualifications</p>
                             <div style="overflow-x:auto">
                        
-                              <table>
+                              <table class="form1">
          
                                     <tr class="headings">
                                    
-                                    <td align="center">Examination</td>
-                                    <td align="center">Name of College</td>
-                                    <td align="center">Educational Board</td>
-                                    <td align="center">Regular/Distance</td>
-                                    <td align="center">Year of Passing</td>
-                                    <td align="center">Medium of Instructions</td>
-                                    <td align="center">Div. & Percentage of Marks</td>
+                                    <td style="color:#333333" align="center">Examination</td>
+                                    <td style="color:#333333" align="center">Name of College</td>
+                                    <td style="color:#333333" align="center">Educational Board</td>
+                                    <td style="color:#333333" align="center">Regular/Distance</td>
+                                    <td style="color:#333333" align="center">Year of Passing</td>
+                                    <td style="color:#333333" align="center">Medium of Instructions</td>
+                                    <td style="color:#333333" align="center">Div. & Percentage of Marks</td>
                                     </tr>
                                      
                                     <tr>
@@ -197,7 +194,7 @@
                                    
                                     <tr>
                                     
-                                    <td>Class XII*</td>
+                                    <td>Class XII<span>*</span></td>
                                     <td><input type="text" name="college_name12" maxlength="30" /></td>
                                     <td><input type="text" name="Board_name12" maxlength="30" /></td>
                                     <td><input type="text" name="mode12" maxlength="30" /></td>
@@ -257,55 +254,79 @@
                                     </tr>
                                     <br>
                                     <br>
-                        <p id="para1" class="para">Publications</p>
+
+                        <div id="net" class="form-group col-md-4">
+                        <p style="font-weight:600;color:#333333">Net Qualified</p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline5" name="netQ" value="yes" class="custom-control-input" >
+                            <label class="custom-control-label" for="customRadioInline5">Yes</label>
+                          </div>
+                          <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline6" name="netQ" value="no" class="custom-control-input" checked>
+                            <label class="custom-control-label" for="customRadioInline6">No</label>
+                          </div>
+                                  
+                                  </div>
+
                         <div class="form-row">
+                         <div class="form-group col-md-4">           
+                        <p style="font-weight:600" id="para3" class="para">Publications</p>
+                        <div id="publication" class="form-row">
                             
-                                <div class="form-group col-md-2">
-                                        <label for="inputNumber7">National Journals</label>
-                                        <input type="text" class="form-control" name="njournal" placeholder="National Journals">
+                                <div class="form-group col-md-6">
+                                        <!-- <label for="inputNumber7">National Journals</label> -->
+                                        <input  type="number" min="0" class="form-control" name="njournal" placeholder="National Journals">
                                 </div>
                                 
                                 
-                            <div class="form-group col-md-2">
-                                    <label for="inputNumber2">International Journals</label>
-                                    <input type="text" class="form-control" name="injournal" placeholder="International Journals">
+                            <div class="form-group col-md-6">
+                                    <!-- <label for="inputNumber2">International Journals</label> -->
+                                    <input  type="number" min="0" class="form-control" name="injournal" placeholder="International Journals">
                             </div>
                             
                         </div>
                     
                         <div class="form-row">
                             
-                                <div class="form-group col-md-2">
-                                        <label for="inputNumber7">NationalConferences</label>
-                                        <input type="text" class="form-control" name="nconference" placeholder="National Conferences">
+                                <div class="form-group col-md-6">
+                                        <!-- <label for="inputNumber7">NationalConferences</label> -->
+                                        <input  type="number" min="0" class="form-control" name="nconference" placeholder="National Conferences">
                                 </div>
                                 
                             
-                            <div class="form-group col-md-2">
-                                    <label for="inputNumber2">International Conferences</label>
-                                    <input type="text" class="form-control" name="inconference" placeholder="International Conferences">
+                            <div class="form-group col-md-6">
+                                    <!-- <label for="inputNumber2">International Conferences</label> -->
+                                    <input  type="number" min="0" class="form-control" name="inconference" placeholder="International Conferences">
                             </div>
                             
+                        </div>
                         </div>
                      
                         <br>
                         <br>
-                        <p id="para1" class="para">Expierence</p>
-                        <div class="form-row">
+
+                        <div id="experience" class="form-group col-md-4">
+                        <p style="font-weight:600" id="para1" class="para">Experience</p>
+                        <!-- <div class="form-row"> -->
                             
-                                <div class="form-group col-md-2">
-                                        <label for="inputNumber7">Teaching</label>
-                                        <input type="text" class="form-control" name="teaching" placeholder="Teaching">
+                                <div class="form-group col-md-8">
+                                        <!-- <label for="inputNumber7">Teaching</label> -->
+                                        <input  type="number" min="0" class="form-control" name="teaching" placeholder="Teaching">
                                 </div>
                                 
                             
-                            <div class="form-group col-md-2">
-                                    <label for="inputNumber2">Corporate</label>
-                                    <input type="text" class="form-control" name="corporate" placeholder="Corporate">
+                            <div class="form-group col-md-8">
+                                    <!-- <label for="inputNumber2">Corporate</label> -->
+                                    <input type="number" min="0" class="form-control" name="corporate" placeholder="Corporate">
                             </div>
                             
                         </div>
-                <button type="submit" id="register" name="submit" value="Submit" class="btn btn-primary">Submit</button>
+
+                        
+                                  
+                                  </div>
+                        </div>
+                <button type="submit" id="register" value="Submit" class="btn btn-primary">Submit</button>
               </form>
  
               </body>

@@ -69,42 +69,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   $yearofpassing_other=$_POST['Year_of_passing_other'];
   $medofins_other=$_POST['medium_of_instruction_other'];
   $marks_other=$_POST['Percentage_other'];
-  
+  $netq=$_POST['netQ'];
   $error;
 
   if(empty($post))
   {
-    $error['post'] = 'post cannot be empty';
+    $error['post'] = 'Post field cannot be empty';
   }
-  else if(!preg_match('/^[A-z ]+$/',$post))
-  {
-    $error['post'] = 'Invalid post';
-  }
+ 
 
   if(empty($first_name))
   {
     $error['name'] = 'Name cannot be empty';
   }
-  else if(!preg_match('/^[A-z ]+$/',$first_name))
+  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$first_name))
   {
-    $error['name'] = 'Invalid name';
+    $error['name'] = 'Invalid Name';
   }
   
   if(empty($father_name))
   {
     $error['fname'] = 'Name cannot be empty';
   }
-  else if(!preg_match('/^[A-z ]+$/',$father_name))
+  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$father_name))
   {
-    $error['fname'] = 'Invalid name';
+    $error['fname'] = 'Invalid Father Name';
   }
 
   
   if(!empty($spouse_name))
   {
-     if(!preg_match('/^[A-z ]+$/',$spouse_name))
+     if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$spouse_name))
       {
-        $error['spname'] = 'spouse name not valid';
+        $error['spname'] = 'Spouse Name not valid';
       }
   }
 
@@ -115,8 +112,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   }
   else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
   {
-    $error['email'] = 'Invalid email';
+    $error['email'] = 'Invalid Email';
   }
+  else{
+			$stmt2 = "SELECT email FROM `users` WHERE email ='$email'";
+            $emailcount=mysqli_query($connection,$stmt2);
+            $row_email=mysqli_fetch_assoc($emailcount);
+			if($row_email > 0)
+			{
+				$error['email']="Email already exists";
+			}
+  }
+
 
   if(empty($contact))
   {
@@ -124,15 +131,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   }
   else if(!preg_match('/([6-9]{1}[0-9]{9})/', $contact))
   {
-    $error['contact'] = 'Invalid contact number';
+    $error['contact'] = 'Invalid Contact Number';
   }
+  else{
+        $stmt1 = "SELECT contactno FROM `users` WHERE contactno =$contact";
+        $contactcount=mysqli_query($connection,$stmt1);
+        $row_contact=mysqli_fetch_assoc($contactcount);
+        if($row_contact > 0)
+        {
+          $error['contact'] ="Contact Already exists";
+        }
+    }
 
 
     if(!empty($alt_contact_no))
     {
       if(!preg_match('/([6-9]{1}[0-9]{9})/', $alt_contact_no))
         {
-          $error['contact'] = 'Invalid contact number';
+          $error['contact'] = 'Invalid Contact Number';
         }
    }
 
@@ -151,51 +167,53 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
   if(empty($date_of_birth))
   {
-    $error['birth'] = 'date of birth cannot be empty';
+    $error['birth'] = 'Date of birth cannot be empty';
   }
 
   if(!empty($spouse_name) and preg_match('/^[A-z ]+$/',$spouse_name))
   {
-    if(empty($date_of_marriage))
+    if(empty($married))
     {
-      $error['marriage'] = 'date of marriage cannot be empty';
+      $error['marriage'] = 'Date of Marriage cannot be empty';
     }
+  }
+	
+    if(!empty($married))
+    {
+	 if(empty($spouse_name))
+  {
+      $error['spname'] = 'Spouse Name cannot be empty';
+  }
   }
 
 
-  if(empty($_POST['college_name10']) || !empty($_POST['Year_of_passing10'])  || !empty($_POST['Board_name10']) || empty($_POST['mode10']) || empty($_POST['medium_of_instruction10']) || empty($_POST['Percentage10']) || empty($_POST['college_name12']) || empty($_POST['Year_of_passing12'])  || empty($_POST['Board_name12']) || empty($_POST['mode12']) || empty($_POST['medium_of_instruction12']) || empty($_POST['Percentage12']) || empty($_POST['college_name_grad']) || empty($_POST['Year_of_passing_grad']) || empty($_POST['Board_name_grad'])|| empty($_POST['mode_grad']) || empty($_POST['medium_of_instruction_grad']) || empty($_POST['Percentage_grad']))
+  if(empty($_POST['college_name10']) || empty($_POST['Year_of_passing10'])  || empty($_POST['Board_name10']) || empty($_POST['mode10']) || empty($_POST['medium_of_instruction10']) || empty($_POST['Percentage10']) || empty($_POST['college_name12']) || empty($_POST['Year_of_passing12'])  || empty($_POST['Board_name12']) || empty($_POST['mode12']) || empty($_POST['medium_of_instruction12']) || empty($_POST['Percentage12']) || empty($_POST['college_name_grad']) || empty($_POST['Year_of_passing_grad']) || empty($_POST['Board_name_grad'])|| empty($_POST['mode_grad']) || empty($_POST['medium_of_instruction_grad']) || empty($_POST['Percentage_grad']))
       {
         $error['qualification']="**Please Fill UP All The Mandatory Details";
       }
 
-if(isset($error['email']) || isset($error['name']) || isset($error['contact']) || isset($error['birth']) || isset($error['marriage']) || isset($error['qualification']))
+if(isset($error['fname']) || isset($error['post']) || isset($error['email']) || isset($error['paddress']) || isset($error['cpaddress']) || isset($error['name']) || isset( $error['spname']) || isset($error['contact']) || isset($error['birth']) || isset($error['marriage']) || isset($error['qualification']))
 		{
       $error['status'] = 1;
  
 		}
 
 else{
-    if(!empty($_POST['Post']) and !empty($_POST['First_Name'])  and !empty($_POST['fname']) and !empty($_POST['caste']) and !empty($_POST['cpAddress']) and !empty($_POST['Mobile_Number']) and !empty($_POST['gender']) and !empty($_POST['Email_Id']) and !empty($_POST['Address'])and !empty($_POST['Birthday_day'])) //and !empty($_POST['njournal'])  and !empty($_POST['injournal'])  and !empty($_POST['nconference'])  and !empty($_POST['inconference']) and !empty($_POST['teaching']) and !empty($_POST['corporate']))
-    { 
-      if(!empty($_POST['college_name10']) and !empty($_POST['Year_of_passing10'])  and !empty($_POST['Board_name10']) and !empty($_POST['mode10']) and !empty($_POST['medium_of_instruction10']) and !empty($_POST['Percentage10']))
-      {
-            
-        if(!empty($_POST['college_name12']) and !empty($_POST['Year_of_passing12'])  and !empty($_POST['Board_name12']) and !empty($_POST['mode12']) and !empty($_POST['medium_of_instruction12']) and !empty($_POST['Percentage12']))
-        {  
-          if(!empty($_POST['college_name_grad']) and !empty($_POST['Year_of_passing_grad'])  and !empty($_POST['Board_name_grad']) and !empty($_POST['mode_grad']) and !empty($_POST['medium_of_instruction_grad']) and !empty($_POST['Percentage_grad']))
-          { 
-              $query="INSERT INTO users(post,urname,fathername,spousename,category,gender,correspondenceaddress,contactno,alternativecontactno,email,permanentaddress,dateofbirth,dateofmarriage,national_journal,international_journal,national_conference,international_conference,teachingexperience ,corporateexperience) "; 
-              $query .="VALUES('$post','$name','$father_name','$spouse_name','$cast','$gender','$corresponding_address',' $contact','$alt_contact_no','$email','$permanent_address','$date_of_birth',' $married','$njournal','$injournal','$nconference','$inconference','$teaching_exp','$corporate_exp')";
-              $result=mysqli_query($connection,$query);
-              if(!$result){
-              die("query failed". mysqli_error($connection));
-              }
-    
-              $query1="SELECT * FROM users WHERE email='$email'";
-              $result1=mysqli_query($connection,$query1);
-              $row=mysqli_fetch_assoc($result1);
-                $userid=$row['userid'];
-    
+	 
+  $error['status'] = 0;
+   
+		$query="INSERT INTO users(post,urname,fathername,spousename,category,gender,correspondenceaddress,contactno,alternativecontactno,email,permanentaddress,dateofbirth,dateofmarriage,national_journal,international_journal,national_conference,international_conference,teachingexperience ,corporateexperience,net_qualified) "; 
+	  $query .="VALUES('$post','$name','$father_name','$spouse_name','$cast','$gender','$corresponding_address',' $contact','$alt_contact_no','$email','$permanent_address','$date_of_birth',' $married','$njournal','$injournal','$nconference','$inconference','$teaching_exp','$corporate_exp','$netq')";
+	  $result=mysqli_query($connection,$query);
+	  if(!$result){
+	  die("query failed". mysqli_error($connection));
+	  }
+
+	  $query1="SELECT * FROM users WHERE email='$email'";
+	  $result1=mysqli_query($connection,$query1);
+	  $row=mysqli_fetch_assoc($result1);
+		$userid=$row['userid'];
+
       
               $query10="INSERT INTO 10th_qualification(user_fk,nameofcollege,educationalboard,mode,yearofpassing,mediumofinstruction,percentageofmarks) "; 
               $query10 .="VALUES('$userid','$college10','$board10','$mode10','$yearofpassing10','$medofins10',' $marks10')";
@@ -252,25 +270,12 @@ else{
                     die("query failed". mysqli_error($connection));
                     }
                 }
-              echo "succesful";
+            
           }
-          else{
-            echo "fill all the mandatory entries";
-              } 
-        }
-        else{
-          echo "fill all the mandatory entries";
-            } 
-      }
-      else{
-        echo "fill all the mandatory entries";
-          } 
-    }
-  else{
-    echo "fill all the mandatory entries";
-  } 
-}
 	echo json_encode($error);
+          
 }
+	
+
 
 ?>
