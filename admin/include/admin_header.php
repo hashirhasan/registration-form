@@ -61,8 +61,8 @@ else if(!isset($_SESSION['user_role']))
        text-decoration: none;
        color:black;
        display: block;
-             text-transform: uppercase;
-			 font-size:  1.0416666666666667vw;
+	   text-transform: uppercase;
+	   font-size:  1.0416666666666667vw;
       }
    .admin{
     
@@ -70,7 +70,8 @@ else if(!isset($_SESSION['user_role']))
        padding: 50px 50px 0px 50px;
 	   background: #f1f1f1;
 	   border-radius: 3%;
-/*	   margin-top: 80px;*/
+/*       margin-top: 80px;*/
+       padding-bottom: 50px;
            
         } 
  
@@ -133,9 +134,26 @@ else if(!isset($_SESSION['user_role']))
   
 }
 
-        
-           /* text-transform: capitalize; */
+   @media (max-width: 720px)
+   {
+/*
+	   ul li {
+    background-color: #f1f1f1;
+    width: 19.7vw;
+    float: left;
+    padding: 0.25vw;
+    text-align: center;
+}
+	   ul li a {
 
+    text-decoration: none;
+    color: black;
+    display: block;
+    text-transform: uppercase;
+    font-size: 2.0416666666666667vw;
+}*/
+
+		}
 	</style>
 </head>
 <body>

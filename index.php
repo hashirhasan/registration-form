@@ -28,7 +28,7 @@
    <script src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/validation.js"></script>
 
-<div id="scroll" class="header">
+<div  class="header">
 
 
     <h1>Registration</h1>
@@ -37,8 +37,8 @@
         <form class="fit"  method="POST">
         <div class="form-row">
                 <div class="form-group col-md-2">
-                <label  for="inputPost">Post</label>
-                <input  class="form-control" type="text" name="Post" id="post" placeholder="Post applied for"/>
+                <label id="scroll" for="inputPost">Post<span>*</span></label>
+                <input  class="form-control" type="text" name="Post" id="post" placeholder="Post applied for" autocomplete="off"/>
                 <span id="err_post"></span>
               </div>
             
@@ -46,33 +46,33 @@
                 <div class="form-row">
                         
                   <div class="form-group col-md-2">
-                    <label for="inputName1">First Name</label>
-                    <input id="name" class="form-control" type="text" name="First_Name" placeholder="First Name"/>
+                    <label for="inputName1">First Name<span>*</span></label>
+                    <input id="name" class="form-control" type="text" name="First_Name" placeholder="First Name" autocomplete="off"/>
                     <span id="err_name"></span>
                   </div>
                  
                   <div class="form-group col-md-2">
                         <label for="inputName2">Middle Name</label>
-                        <input id="middlename" type="text" class="form-control" name="Middle_Name" placeholder="Middle Name"/>
+                        <input id="middlename" type="text" class="form-control" name="Middle_Name" placeholder="Middle Name" autocomplete="off"/>
                       </div>
                     
                   <div class="form-group col-md-2">
                     <label for="inputName3">Last Name </label>
-                    <input id="lastname" type="text" class="form-control" name="Last_Name" placeholder="Last Name"/>
+                    <input id="lastname" type="text" class="form-control" name="Last_Name" placeholder="Last Name" autocomplete="off"/>
                   </div>
                
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                            <label for="inputName5">Father's Name </label>
-                            <input type="text" class="form-control" id="fname"  name="fname" placeholder="Father's Name">
+                            <label for="inputName5">Father's Name<span>*</span> </label>
+                            <input type="text" class="form-control" id="fname"  name="fname" placeholder="Father's Name" autocomplete="off">
                             <span id="err_fname"></span>
                     </div>
                     
                     <div class="form-group col-md-4">
                             <label for="inputName6">Spouse Name </label>
-                            <input type="text" class="form-control" name="Spouse_name" id="spname" placeholder="Spouse Name">
+                            <input type="text" class="form-control" name="Spouse_name" id="spname" placeholder="Spouse Name" autocomplete="off">
                             <span id="err_spname"></span>
                     </div>
                    
@@ -80,7 +80,7 @@
 
                 <div class="form-row">
                         <div class="form-group col-md-4">
-                                <label for="inputCategory">Caste/Category</label>
+                                <label for="inputCategory">Caste/Category<span>*</span></label>
                                 <select id="inputCategory" name="caste" class="form-control">
                                   <option>General</option>
                                   <option>SC/ST</option>
@@ -89,8 +89,8 @@
                               </div>
                               <span id=""></span>
                         <div class="form-group col-md-4">
-                                <label for="inputEmail">Email </label>
-                                <input type="text" class="form-control" id="email" name="Email_Id" placeholder="Email">
+                                <label for="inputEmail">Email <span>*</span></label>
+                                <input type="text" class="form-control" id="email" name="Email_Id" placeholder="Email" autocomplete="off">
                                 <span id="err_email"></span>
                         </div>
                        
@@ -99,13 +99,13 @@
 
                 <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputAddress">Corresponding Address</label>
+                  <label for="inputAddress">Corresponding Address<span>*</span></label>
                   <textarea class="form-control" id="cpaddress" name="cpAddress"  rows="3" placeholder="Address"></textarea>
                   <span id="err_cpaddress"></span>
                 </div>
               
                 <div class="form-group col-md-4">
-                        <label for="inputAddress">Permanent Address</label>
+                        <label for="inputAddress">Permanent Address<span>*</span></label>
                         <textarea class="form-control" id="paddress"  name="Address"  rows="3" placeholder="Address"></textarea>
                         <span id="err_paddress"></span>
                   </div>
@@ -113,14 +113,14 @@
         
             <div class="form-row">
             <div class="form-group col-md-4">
-                    <label for="inputDate">Date of Birth</label>
+                    <label for="inputDate">Date of Birth<span>*</span></label>
                     <input type="date" id="birth" name="Birthday_day" max="3000-12-31" 
                            min="1000-01-01" class="form-control">
                            <span id="err_birth"></span>
                    </div>
                   
                    <div class="form-group col-md-4">
-                        <p style="font-weight:600;color:#333333">Gender</p>
+                        <p style="font-weight:600;color:#333333">Gender<span>*</span></p>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" name="gender" value="male" class="custom-control-input" checked>
                             <label class="custom-control-label" for="customRadioInline1">Male</label>
@@ -136,14 +136,14 @@
 
                 <div class="form-row">
                         <div class="form-group col-md-4">
-                                <label for="inputNumber1">Mobile Number</label>
-                                <input type="text" class="form-control" id="contact_number" name="Mobile_Number" placeholder="Mobile Number">
+                                <label for="inputNumber1">Mobile Number<span>*</span></label>
+                                <input type="text" class="form-control" id="contact_number" name="Mobile_Number" placeholder="Mobile Number" autocomplete="off">
                                 <span id="err_contact_number"></span>
                         </div>
                        
                         <div class="form-group col-md-4">
                                 <label for="inputNumber2">Alternative Mobile Number</label>
-                                <input type="text" class="form-control" id="alt_contact_number" name="alt_Mobile_Number" placeholder="Alternative Mobile Number">
+                                <input type="text" class="form-control" id="alt_contact_number" name="alt_Mobile_Number" placeholder="Alternative Mobile Number" autocomplete="off">
                                 <span id="err_alt_contact_number"></span>
                         </div>
                        
@@ -183,68 +183,68 @@
                                      
                                     <tr>
                                     
-                                    <td>Class X*</td>
-                                    <td><input type="text" name="college_name10" maxlength="30" /></td>
-                                    <td><input type="text" name="Board_name10" maxlength="30" /></td>
-                                    <td><input type="text" name="mode10" maxlength="30" /></td>
-                                    <td><input type="text" name="Year_of_passing10" maxlength="30" /></td>
-                                    <td><input type="text" name="medium_of_instruction10" maxlength="30" /></td>
-                                    <td><input type="text" name="Percentage10" maxlength="30" /></td>
+                                    <td>Class X<span>*</span></td>
+                                    <td><input type="text" name="college_name10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Board_name10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="mode10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Year_of_passing10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="medium_of_instruction10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Percentage10" maxlength="30"  autocomplete="off"/></td>
                                     </tr>
                                    
                                     <tr>
                                     
                                     <td>Class XII<span>*</span></td>
-                                    <td><input type="text" name="college_name12" maxlength="30" /></td>
-                                    <td><input type="text" name="Board_name12" maxlength="30" /></td>
-                                    <td><input type="text" name="mode12" maxlength="30" /></td>
-                                    <td><input type="text" name="Year_of_passing12" maxlength="30" /></td>
-                                    <td><input type="text" name="medium_of_instruction12" maxlength="30" /></td>
-                                    <td><input type="text" name="Percentage12" maxlength="30" /></td>
+                                    <td><input type="text" name="college_name12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Board_name12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="mode12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Year_of_passing12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="medium_of_instruction12" maxlength="30" autocomplete="off"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Percentage12" maxlength="30"  autocomplete="off"/></td>
                                     </tr>
                                    
                                     <tr>
                                     
-                                    <td>Graduation*</td>
-                                    <td><input type="text" name="college_name_grad" maxlength="30" /></td>
-                                    <td><input type="text" name="Board_name_grad" maxlength="30" /></td>
-                                    <td><input type="text" name="mode_grad" maxlength="30" /></td>
-                                    <td><input type="text" name="Year_of_passing_grad" maxlength="30" /></td>
-                                    <td><input type="text" name="medium_of_instruction_grad" maxlength="30" /></td>
-                                    <td><input type="text" name="Percentage_grad" maxlength="30" /></td>
+                                    <td>Graduation<span>*</span></td>
+                                    <td><input type="text" name="college_name_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Board_name_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="mode_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Year_of_passing_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="medium_of_instruction_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Percentage_grad" maxlength="30"  autocomplete="off"/></td>
                                     </tr>
                                      
                         
                                     <tr>
                                     <td>P.G.</td>
-                                    <td><input type="text" name="college_name_postgrad" maxlength="30" /></td>
-                                    <td><input type="text" name="Board_name_postgrad" maxlength="30" /></td>
-                                    <td><input type="text" name="mode_postgrad" maxlength="30" /></td>
-                                    <td><input type="text" name="Year_of_passing_postgrad" maxlength="30" /></td>
-                                    <td><input type="text" name="medium_of_instruction_postgrad" maxlength="30" /></td>
-                                    <td><input type="text" name="Percentage_postgrad" maxlength="30" /></td>
+                                    <td><input type="text" name="college_name_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Board_name_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="mode_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Year_of_passing_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="medium_of_instruction_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Percentage_postgrad" maxlength="30"  autocomplete="off"/></td>
                                     </tr>
                                     
                                  
                                     <tr>
                                     <td>P.hd</td>
-                                    <td><input type="text" name="college_name_phd" maxlength="30" /></td>
-                                    <td><input type="text" name="Board_name_phd" maxlength="30" /></td>
-                                    <td><input type="text" name="mode_phd" maxlength="30" /></td>
-                                    <td><input type="text" name="Year_of_passing_phd" maxlength="30" /></td>
-                                    <td><input type="text" name="medium_of_instruction_phd" maxlength="30" /></td>
-                                    <td><input type="text" name="Percentage_phd" maxlength="30" /></td>
+                                    <td><input type="text" name="college_name_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Board_name_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="mode_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Year_of_passing_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="medium_of_instruction_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" name="Percentage_phd" maxlength="30"  autocomplete="off"/></td>
                                     </tr>
                                      
                                    
                                     <tr>
                                             <td>Others</td>
-                                            <td><input type="text" name="college_name_other" maxlength="30" /></td>
-                                            <td><input type="text" name="Board_name_other" maxlength="30" /></td>
-                                            <td><input type="text" name="mode_other" maxlength="30" /></td>
-                                            <td><input type="text" name="Year_of_passing_other" maxlength="30" /></td>
-                                            <td><input type="text" name="medium_of_instruction_other" maxlength="30" /></td>
-                                            <td><input type="text" name="Percentage_other" maxlength="30" /></td>
+                                            <td><input type="text" name="college_name_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" name="Board_name_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" name="mode_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" name="Year_of_passing_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" name="medium_of_instruction_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" name="Percentage_other" maxlength="30"  autocomplete="off"/></td>
                                             </tr>
                                           
                                     </table>
@@ -275,13 +275,13 @@
                             
                                 <div class="form-group col-md-6">
                                         <!-- <label for="inputNumber7">National Journals</label> -->
-                                        <input  type="number" min="0" class="form-control" name="njournal" placeholder="National Journals">
+                                        <input  type="number" min="0" class="form-control" name="njournal" placeholder="National Journals" autocomplete="off">
                                 </div>
                                 
                                 
                             <div class="form-group col-md-6">
                                     <!-- <label for="inputNumber2">International Journals</label> -->
-                                    <input  type="number" min="0" class="form-control" name="injournal" placeholder="International Journals">
+                                    <input  type="number" min="0" class="form-control" name="injournal" placeholder="International Journals" autocomplete="off">
                             </div>
                             
                         </div>
@@ -290,13 +290,13 @@
                             
                                 <div class="form-group col-md-6">
                                         <!-- <label for="inputNumber7">NationalConferences</label> -->
-                                        <input  type="number" min="0" class="form-control" name="nconference" placeholder="National Conferences">
+                                        <input  type="number" min="0" class="form-control" name="nconference" placeholder="National Conferences" autocomplete="off">
                                 </div>
                                 
                             
                             <div class="form-group col-md-6">
                                     <!-- <label for="inputNumber2">International Conferences</label> -->
-                                    <input  type="number" min="0" class="form-control" name="inconference" placeholder="International Conferences">
+                                    <input  type="number" min="0" class="form-control" name="inconference" placeholder="International Conferences" autocomplete="off">
                             </div>
                             
                         </div>
@@ -311,13 +311,13 @@
                             
                                 <div class="form-group col-md-8">
                                         <!-- <label for="inputNumber7">Teaching</label> -->
-                                        <input  type="number" min="0" class="form-control" name="teaching" placeholder="Teaching">
+                                        <input  type="number" min="0" class="form-control" name="teaching" placeholder="Teaching" autocomplete="off">
                                 </div>
                                 
                             
                             <div class="form-group col-md-8">
                                     <!-- <label for="inputNumber2">Corporate</label> -->
-                                    <input type="number" min="0" class="form-control" name="corporate" placeholder="Corporate">
+                                    <input type="number" min="0" class="form-control" name="corporate" placeholder="Corporate" autocomplete="off">
                             </div>
                             
                         </div>

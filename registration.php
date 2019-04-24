@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
    $medofins_postgrad=$_POST['medium_of_instruction_postgrad'];
    $marks_postgrad=$_POST['Percentage_postgrad'];
 
-    $college_phd= $_POST['college_name_phd'];
+  $college_phd= $_POST['college_name_phd'];
   $board_phd=$_POST['Board_name_phd'];
   $mode_phd=$_POST['mode_phd'];
   $yearofpassing_phd=$_POST['Year_of_passing_phd'];
@@ -75,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   if(empty($post))
   {
     $error['post'] = 'Post field cannot be empty';
+  }else{
+	   $error['post'] = "";
   }
  
 
@@ -82,27 +84,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $error['name'] = 'Name cannot be empty';
   }
-  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$first_name))
+  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/',$first_name))
   {
     $error['name'] = 'Invalid Name';
+  }else{
+	   $error['name'] ="";
   }
   
   if(empty($father_name))
   {
     $error['fname'] = 'Name cannot be empty';
   }
-  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$father_name))
+  else if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/',$father_name))
   {
     $error['fname'] = 'Invalid Father Name';
+  }else{
+	   $error['fname'] ="";
   }
 
   
   if(!empty($spouse_name))
   {
-     if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/',$spouse_name))
+     if(!preg_match('/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/',$spouse_name))
       {
         $error['spname'] = 'Spouse Name not valid';
-      }
+      }else{
+		   $error['spname'] ="";
+	  }
+  }else{
+	    $error['spname'] ="";
   }
 
 
@@ -114,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $error['email'] = 'Invalid Email';
   }
+
   else{
 			$stmt2 = "SELECT email FROM `users` WHERE email ='$email'";
             $emailcount=mysqli_query($connection,$stmt2);
@@ -121,6 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			if($row_email > 0)
 			{
 				$error['email']="Email already exists";
+			}else{
+				 $error['email'] ="";
 			}
   }
 
@@ -133,6 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $error['contact'] = 'Invalid Contact Number';
   }
+	
   else{
         $stmt1 = "SELECT contactno FROM `users` WHERE contactno =$contact";
         $contactcount=mysqli_query($connection,$stmt1);
@@ -141,6 +155,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
           $error['contact'] ="Contact Already exists";
         }
+	  else{
+		  $error['contact'] ="";
+	  }
     }
 
 
@@ -148,26 +165,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
       if(!preg_match('/([6-9]{1}[0-9]{9})/', $alt_contact_no))
         {
-          $error['contact'] = 'Invalid Contact Number';
+          $error['alt_contact'] = 'Invalid Contact Number';
         }
-   }
+		else{
+		  $error['alt_contact']="";
+	}
+   }else{
+		  $error['alt_contact']="";
+	}
 
   
   if(empty($corresponding_address))
   {
     $error['cpaddress'] = 'Address field cannot be empty';
+  }else{
+	   $error['cpaddress'] = "";
   }
 
 
   if(empty($permanent_address))
   {
     $error['paddress'] = 'Address field cannot be empty';
+  }else{
+	   $error['paddress'] ="";
   }
 
 
   if(empty($date_of_birth))
   {
     $error['birth'] = 'Date of birth cannot be empty';
+  }else{
+	   $error['birth'] ="";
   }
 
   if(!empty($spouse_name) and preg_match('/^[A-z ]+$/',$spouse_name))
@@ -176,6 +204,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
       $error['marriage'] = 'Date of Marriage cannot be empty';
     }
+	  else{
+	  $error['marriage'] = "";
+  }
+	  
+  }else{
+	  $error['marriage'] = "";
   }
 	
     if(!empty($married))
@@ -183,6 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	 if(empty($spouse_name))
   {
       $error['spname'] = 'Spouse Name cannot be empty';
+  }else{
+	    $error['spname'] ="";
   }
   }
 
@@ -190,9 +226,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   if(empty($_POST['college_name10']) || empty($_POST['Year_of_passing10'])  || empty($_POST['Board_name10']) || empty($_POST['mode10']) || empty($_POST['medium_of_instruction10']) || empty($_POST['Percentage10']) || empty($_POST['college_name12']) || empty($_POST['Year_of_passing12'])  || empty($_POST['Board_name12']) || empty($_POST['mode12']) || empty($_POST['medium_of_instruction12']) || empty($_POST['Percentage12']) || empty($_POST['college_name_grad']) || empty($_POST['Year_of_passing_grad']) || empty($_POST['Board_name_grad'])|| empty($_POST['mode_grad']) || empty($_POST['medium_of_instruction_grad']) || empty($_POST['Percentage_grad']))
       {
         $error['qualification']="**Please Fill UP All The Mandatory Details";
-      }
+      }else{
+		  $error['qualification']="";
+	  }
 
-if(isset($error['fname']) || isset($error['post']) || isset($error['email']) || isset($error['paddress']) || isset($error['cpaddress']) || isset($error['name']) || isset( $error['spname']) || isset($error['contact']) || isset($error['birth']) || isset($error['marriage']) || isset($error['qualification']))
+if(($error['fname']!="") || ($error['post']!="") || ($error['email']!="") || ($error['paddress']!="") || ($error['cpaddress']!="") || ($error['name']!="") || ( $error['spname']!="") || ($error['contact']!="") || ($error['birth']!="") ||  ($error['marriage']!="") || ($error['qualification']!=""))
 		{
       $error['status'] = 1;
  

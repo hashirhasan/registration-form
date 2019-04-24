@@ -36,7 +36,7 @@ $(document).ready(function () {
             $('#err_name').fadeIn("2500").show();
             return false;
         }
-        else  if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/.test(name)) != true) 
+        else  if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/.test(name)) != true) 
         {
             $('#err_name').text("Invalid Name");
             $('#err_name').fadeIn("2500").show();
@@ -62,7 +62,7 @@ $(document).ready(function () {
             $('#err_fname').fadeIn("2500").show();
             return false;
         }
-        else  if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/.test(fname)) != true) 
+        else  if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/.test(fname)) != true) 
         {
             $('#err_fname').text("Invalid Father Name");
             $('#err_fname').fadeIn("2500").show();
@@ -86,7 +86,7 @@ $(document).ready(function () {
         //check if its valid name or not
         if(spname!="")
         {
-            if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{2,15}$/.test(spname)) != true) 
+            if ((/^[A-z]+[\s]{0,1}[A-z]+[\s]{0,1}[A-z]{0,15}$/.test(spname)) != true) 
             {
                 $('#err_spname').text("Invalid Spouse Name");
                 $('#err_spname').fadeIn("2500").show();
@@ -492,7 +492,7 @@ $('#register').on('click',function(){
 		var netQ=$('input[name=netQ]:checked').val();  
 
 
-		var datastring='Post='+post+'&First_Name='+first_name+'&Middle_Name='+middle_name+'&Last_Name='+last_name+'&fname='+father_name+'&Spouse_name='+spouse_name+'&caste='+cast+'&cpAddress='+corresponding_address+'&Address='+permanent_address+'&Mobile_Number='+contact+'&alt_Mobile_Number='+alt_contact_no+'&Email_Id='+email+'&gender='+gender+'&Birthday_day='+date_of_birth+'&marriage_day='+married+'&college_name10='+college10+'&Board_name10='+board10+'&mode10='+mode10+'&Year_of_passing10='+yearofpassing10+'&medium_of_instruction10='+medofins10+'&Percentage10='+marks10+'&college_name12='+college12+'&Board_name12='+board12+'&mode12='+mode12+'&Year_of_passing12='+yearofpassing12+'&medium_of_instruction12='+medofins12+'&Percentage12='+marks12+'&college_name_phd='+college_phd+'&Board_name_phd='+board_phd+'&mode_phd'+mode_phd+'&Year_of_passing_phd='+yearofpassing_phd+'&medium_of_instruction_phd='+medofins_phd+'&Percentage_phd='+marks_phd+'&college_name_grad='+college_grad+'&Board_name_grad='+board_grad+'&mode_grad='+mode_grad+'&Year_of_passing_grad='+yearofpassing_grad+'&medium_of_instruction_grad='+medofins_grad+'&Percentage_grad='+marks_grad+'&college_name_postgrad='+college_postgrad+'&Board_name_postgrad='+board_postgrad+'&mode_postgrad='+mode_postgrad+'&Year_of_passing_postgrad='+yearofpassing_postgrad+'&medium_of_instruction_postgrad='+medofins_postgrad+'&Percentage_postgrad='+marks_postgrad+'&college_name_other='+college_other+'&Board_name_other='+board_other+'&mode_other='+mode_other+'&Year_of_passing_other='+yearofpassing_other+'&medium_of_instruction_other='+medofins_other+'&Percentage_other='+marks_other+'&njournal='+njournal+'&injournal='+injournal+'&nconference='+nconference+'&inconference='+inconference+'&teaching='+teaching_exp+'&corporate='+corporate_exp+'&netQ='+netQ;
+		var datastring='Post='+post+'&First_Name='+first_name+'&Middle_Name='+middle_name+'&Last_Name='+last_name+'&fname='+father_name+'&Spouse_name='+spouse_name+'&caste='+cast+'&cpAddress='+corresponding_address+'&Address='+permanent_address+'&Mobile_Number='+contact+'&alt_Mobile_Number='+alt_contact_no+'&Email_Id='+email+'&gender='+gender+'&Birthday_day='+date_of_birth+'&marriage_day='+married+'&college_name10='+college10+'&Board_name10='+board10+'&mode10='+mode10+'&Year_of_passing10='+yearofpassing10+'&medium_of_instruction10='+medofins10+'&Percentage10='+marks10+'&college_name12='+college12+'&Board_name12='+board12+'&mode12='+mode12+'&Year_of_passing12='+yearofpassing12+'&medium_of_instruction12='+medofins12+'&Percentage12='+marks12+'&college_name_phd='+college_phd+'&Board_name_phd='+board_phd+'&mode_phd='+mode_phd+'&Year_of_passing_phd='+yearofpassing_phd+'&medium_of_instruction_phd='+medofins_phd+'&Percentage_phd='+marks_phd+'&college_name_grad='+college_grad+'&Board_name_grad='+board_grad+'&mode_grad='+mode_grad+'&Year_of_passing_grad='+yearofpassing_grad+'&medium_of_instruction_grad='+medofins_grad+'&Percentage_grad='+marks_grad+'&college_name_postgrad='+college_postgrad+'&Board_name_postgrad='+board_postgrad+'&mode_postgrad='+mode_postgrad+'&Year_of_passing_postgrad='+yearofpassing_postgrad+'&medium_of_instruction_postgrad='+medofins_postgrad+'&Percentage_postgrad='+marks_postgrad+'&college_name_other='+college_other+'&Board_name_other='+board_other+'&mode_other='+mode_other+'&Year_of_passing_other='+yearofpassing_other+'&medium_of_instruction_other='+medofins_other+'&Percentage_other='+marks_other+'&njournal='+njournal+'&injournal='+injournal+'&nconference='+nconference+'&inconference='+inconference+'&teaching='+teaching_exp+'&corporate='+corporate_exp+'&netQ='+netQ;
 
 		$.ajax({
 					type : "POST",
@@ -500,8 +500,9 @@ $('#register').on('click',function(){
 					data : datastring,
 					datatype : "json",
 					cache : false,
+			
 					success : function(result){
-
+     
 						var result = $.parseJSON(result);
 						if(result.status == 0)
 						{ 
@@ -512,58 +513,64 @@ $('#register').on('click',function(){
 						else if(result.status == 1)
 						{
 
-							if(result.post !=0)
+							if(result.post !="")
 							{
+								$("#err_post").blur();
 								$("#err_post").text(result.post);
 								$("#err_post").show();
 							}
-							if(result.name !=0)
-							{
+							if(result.name !="")
+							{ 
+								
 								$("#err_name").text(result.name);
 								$("#err_name").show();
 							}
-							if(result.fname !=0)
+							if(result.fname !="")
 							{
 								$("#err_fname").text(result.fname);
 								$("#err_fname").show();
 							}
-							if(result.paddress !=0)
+							if(result.paddress !="")
 							{
 								$("#err_paddress").text(result.paddress);
 								$("#err_paddress").show();
 							}
-							if(result.cpaddress !=0)
+							if(result.cpaddress !="")
 							{
 								$("#err_cpaddress").text(result.cpaddress);
 								$("#err_cpaddress").show();
 							}
-							if(result.birth !=0)
+						
+							if(result.birth !="")
 							{
 								$("#err_birth").text(result.birth);
 								$("#err_birth").show();
 							}
-							if(result.qualification !=0)
+							
+							if(result.qualification !="")
 							{
 								$("#err_qualification").text(result.qualification);
 								$("#err_quaification").show();
 							}
-							if(result.email!=0)
+						
+							if(result.email !="")
 							{
+								
 								$("#err_email").text(result.email);
 								$("#err_email").show();
 							}
-							if(result.contact!=0)
+							if(result.contact !="")
 							{
 								$("#err_contact_number").text(result.contact);
 								$("#err_contact_number").show();
 							}
-							if(result.marriage!=0)
+							if(result.marriage!="")
 							{ 
 								$("#err_marriage").text(result.marriage);
 								$("#err_marriage").show();
 							}
-							if(result.spname!=0)
-							{ console.log("heo");
+							if(result.spname!="")
+							{ 
 								$("#err_spname").text(result.spname);
 								$("#err_spname").show();
 							}

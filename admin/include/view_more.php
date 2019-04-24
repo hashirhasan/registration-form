@@ -159,7 +159,14 @@
   <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/registration.css">
-
+<style>
+@media (max-width: 720px)
+{
+.para {
+    margin: auto;
+	}
+}
+</style>
 <form class="fit"  method="POST">
         <div class="form-row">
                 <div class="form-group col-md-4">

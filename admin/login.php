@@ -36,7 +36,7 @@ if(isset($_POST['login_user']))
  
     }
  
-  $enter_password=md5($enter_password);
+
 
   if($enter_username===$username and $enter_password===$user_password)
   { 
