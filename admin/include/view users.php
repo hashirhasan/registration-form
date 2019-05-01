@@ -61,7 +61,7 @@ table.gridtable td {
                         <th>Contact Number</th>
                         <th>Email Id</th>
                         <th>More Details</th>
-                       
+                        <th>Delete</th>
                         
                         
                        
@@ -99,7 +99,7 @@ table.gridtable td {
                             
     
                             echo"<td><a href='users.php?source=view_more&user_id={$user_id}'>View More</a></td>";// link for editing the details of the user
-                          
+                           echo"<td ><a onClick=\"javascript: return confirm('Are you sure you want to delete this post?');\" href='users.php?delete={$user_id}'>Delete</a></td>"; 
                         
                             // echo"<td>";
                             //  if($_SESSION['user_id']!==$user_id )
@@ -115,4 +115,26 @@ table.gridtable td {
                     ?>
                     </tbody>
                     </table>
-        
+   <form action="excel.php" method="post">
+<button type="submit" name="submit">Excel_export</button>
+</form>
+      <?php 
+                     if(isset($_GET['delete']))
+                        {
+                             if(isset($_SESSION['user_role']))
+                                {
+                                    if($_SESSION['user_role']==='admin')
+                                    {
+                            $post_id=$_GET['delete'];                   //delete the users
+                               $query="DELETE FROM users ";
+                                $query .="WHERE userid=$user_id";   
+                                $result=mysqli_query($connection,$query);
+                                if(!$result){
+                                    die("query failed" .mysqli_error($connection));
+                                }
+                            header("Location:users.php");
+                            
+                                  }
+                                }
+                        }
+?>   

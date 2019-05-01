@@ -28,11 +28,16 @@
    <script src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/validation.js"></script>
 
-<div  class="header">
+<div  class="col s12 m12 l12" id="header">
 
 
-    <h1>Registration</h1>
+   <img src="./image/newheader.jpg" height="150px" width="100%">
 </div>
+	<br>
+
+<h5 style="text-decoration: underline;">FACULTY RECRUITMENT FORM</h5>
+	
+	<div class="blue" style="width: 100%"></div>
 
         <form class="fit"  method="POST">
         <div class="form-row">
@@ -165,7 +170,7 @@
 
                         
                      
-                            <p style="font-weight:600" class="para">Qualifications</p>
+                            <p style="font-weight:600" class="para">Qualifications<span>*</span></p>
                             <div style="overflow-x:auto">
                        
                               <table class="form1">
@@ -174,7 +179,7 @@
                                    
                                     <td style="color:#333333" align="center">Examination</td>
                                     <td style="color:#333333" align="center">Name of College</td>
-                                    <td style="color:#333333" align="center">Educational Board</td>
+                                    <td style="color:#333333" align="center">Board/University</td>
                                     <td style="color:#333333" align="center">Regular/Distance</td>
                                     <td style="color:#333333" align="center">Year of Passing</td>
                                     <td style="color:#333333" align="center">Medium of Instructions</td>
@@ -187,9 +192,9 @@
                                     <td><input type="text" name="college_name10" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="Board_name10" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="mode10" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Year_of_passing10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="year10" name="Year_of_passing10" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="medium_of_instruction10" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Percentage10" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="percent10"name="Percentage10" maxlength="3"  autocomplete="off"/></td>
                                     </tr>
                                    
                                     <tr>
@@ -198,9 +203,9 @@
                                     <td><input type="text" name="college_name12" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="Board_name12" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="mode12" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Year_of_passing12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="year12" name="Year_of_passing12" maxlength="4"  autocomplete="off"/></td>
                                     <td><input type="text" name="medium_of_instruction12" maxlength="30" autocomplete="off"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Percentage12" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="percent12"name="Percentage12" maxlength="3"  autocomplete="off"/></td>
                                     </tr>
                                    
                                     <tr>
@@ -209,9 +214,9 @@
                                     <td><input type="text" name="college_name_grad" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="Board_name_grad" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="mode_grad" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Year_of_passing_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="yeargrad" name="Year_of_passing_grad" maxlength="4"  autocomplete="off"/></td>
                                     <td><input type="text" name="medium_of_instruction_grad" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Percentage_grad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="percentgrad"name="Percentage_grad" maxlength="3"  autocomplete="off"/></td>
                                     </tr>
                                      
                         
@@ -220,9 +225,9 @@
                                     <td><input type="text" name="college_name_postgrad" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="Board_name_postgrad" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="mode_postgrad" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Year_of_passing_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="yearpostgrad" name="Year_of_passing_postgrad" maxlength="4"  autocomplete="off"/></td>
                                     <td><input type="text" name="medium_of_instruction_postgrad" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Percentage_postgrad" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="percentpostgrad"name="Percentage_postgrad" maxlength="3"  autocomplete="off"/></td>
                                     </tr>
                                     
                                  
@@ -231,9 +236,9 @@
                                     <td><input type="text" name="college_name_phd" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="Board_name_phd" maxlength="30"  autocomplete="off"/></td>
                                     <td><input type="text" name="mode_phd" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Year_of_passing_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="yearphd" name="Year_of_passing_phd" maxlength="4"  autocomplete="off"/></td>
                                     <td><input type="text" name="medium_of_instruction_phd" maxlength="30"  autocomplete="off"/></td>
-                                    <td><input type="text" name="Percentage_phd" maxlength="30"  autocomplete="off"/></td>
+                                    <td><input type="text" id="percentphd"name="Percentage_phd" maxlength="3"  autocomplete="off"/></td>
                                     </tr>
                                      
                                    
@@ -242,14 +247,14 @@
                                             <td><input type="text" name="college_name_other" maxlength="30"  autocomplete="off"/></td>
                                             <td><input type="text" name="Board_name_other" maxlength="30"  autocomplete="off"/></td>
                                             <td><input type="text" name="mode_other" maxlength="30"  autocomplete="off"/></td>
-                                            <td><input type="text" name="Year_of_passing_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" id="yearother" name="Year_of_passing_other" maxlength="4"  autocomplete="off"/></td>
                                             <td><input type="text" name="medium_of_instruction_other" maxlength="30"  autocomplete="off"/></td>
-                                            <td><input type="text" name="Percentage_other" maxlength="30"  autocomplete="off"/></td>
+                                            <td><input type="text" id="percentother"name="Percentage_other" maxlength="3"  autocomplete="off"/></td>
                                             </tr>
                                           
                                     </table>
                                     </div>
-                                    <span style="margin-left:70px; font-size:15px" id="err_qualification"></span>
+                                    <span style=" font-size:15px" id="err_qualification"></span>
                                    
                                     </tr>
                                     <br>
@@ -270,7 +275,7 @@
 
                         <div class="form-row">
                          <div class="form-group col-md-4">           
-                        <p style="font-weight:600" id="para3" class="para">Publications</p>
+                        <p style="font-weight:600" id="para3" class="para">Publications <span style="font-weight:300;font-size:10px" class="text-muted">(In Numbers)</span></p>
                         <div id="publication" class="form-row">
                             
                                 <div class="form-group col-md-6">
@@ -285,7 +290,7 @@
                             </div>
                             
                         </div>
-                    
+                      <p style="font-weight:600" id="para3" class="para">Conferences <span style="font-weight:300;font-size:9px" class="text-muted">(In Numbers,publications in conference shall not be counted)</span></p>
                         <div class="form-row">
                             
                                 <div class="form-group col-md-6">
@@ -306,7 +311,7 @@
                         <br>
 
                         <div id="experience" class="form-group col-md-4">
-                        <p style="font-weight:600" id="para1" class="para">Experience</p>
+                        <p style="font-weight:600" id="para1" class="para">Experience <span style="font-weight:300;font-size:10px" class="text-muted">(In Numbers)</span></p>
                         <!-- <div class="form-row"> -->
                             
                                 <div class="form-group col-md-8">

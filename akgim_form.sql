@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2019 at 08:34 AM
+-- Generation Time: Apr 25, 2019 at 11:04 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -38,14 +38,6 @@ CREATE TABLE `10th_qualification` (
   `percentageofmarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `10th_qualification`
---
-
-INSERT INTO `10th_qualification` (`user_fk`, `nameofcollege`, `educationalboard`, `mode`, `yearofpassing`, `mediumofinstruction`, `percentageofmarks`) VALUES
-(1, 'gn', 'cbse', 'regular', '2019', 'english', ' 56'),
-(36, 'fb', 'xc', 'regular', 'ssssx', 'as', ' as');
-
 -- --------------------------------------------------------
 
 --
@@ -61,14 +53,6 @@ CREATE TABLE `12th_qualification` (
   `mediumofinstruction` varchar(255) NOT NULL,
   `percentageofmarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `12th_qualification`
---
-
-INSERT INTO `12th_qualification` (`user_fk`, `nameofcollege`, `educationalboard`, `mode`, `yearofpassing`, `mediumofinstruction`, `percentageofmarks`) VALUES
-(1, 'gn', 'cbse', 'reguar', '2019', 'english', ' 45'),
-(36, 'fg', 'xc', 'ss', 'xs', 'as', ' as');
 
 -- --------------------------------------------------------
 
@@ -87,7 +71,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`username`, `user_password`, `user_role`) VALUES
-('akgim_admin', 'fcea920f7412b5da7be0cf42b8c93759', 'admin');
+('akgim_admin', 'admin@123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -104,14 +88,6 @@ CREATE TABLE `grad_qualification` (
   `mediumofinstruction` varchar(255) NOT NULL,
   `percentageofmarks` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `grad_qualification`
---
-
-INSERT INTO `grad_qualification` (`user_fk`, `nameofcollege`, `educationalboard`, `mode`, `yearofpassing`, `mediumofinstruction`, `percentageofmarks`) VALUES
-(1, 'gn', 'cbse', 'regular', '0239', 'english', ' 45'),
-(36, 'fb', 'xx', 'ss', 'dd', 'as', ' as');
 
 -- --------------------------------------------------------
 
@@ -178,7 +154,7 @@ CREATE TABLE `users` (
   `correspondenceaddress` varchar(255) NOT NULL,
   `contactno` bigint(12) NOT NULL,
   `email` varchar(191) NOT NULL,
-  `alternativecontactno` int(11) DEFAULT NULL,
+  `alternativecontactno` varchar(255) DEFAULT NULL,
   `permanentaddress` varchar(255) NOT NULL,
   `dateofbirth` varchar(255) NOT NULL,
   `dateofmarriage` varchar(255) DEFAULT NULL,
@@ -190,14 +166,6 @@ CREATE TABLE `users` (
   `teachingexperience` int(3) NOT NULL,
   `corporateexperience` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`userid`, `post`, `urname`, `fathername`, `spousename`, `category`, `gender`, `correspondenceaddress`, `contactno`, `email`, `alternativecontactno`, `permanentaddress`, `dateofbirth`, `dateofmarriage`, `net_qualified`, `national_journal`, `international_journal`, `national_conference`, `international_conference`, `teachingexperience`, `corporateexperience`) VALUES
-(1, 'teacher', 'mohd hashir hasan hasan hasan', 'Ghulam Mohd Sabir Siddiqui', '', 'General', 'male', 'gkp', 7007513065, 'hasanhashir134@gmail.com', 0, 'gzb', '2019-04-12', NULL, 'yes', 0, 0, 0, 0, 0, 0),
-(36, 'teacher', 'utkarsh   ', 'mukesh kumar', 'spouse', 'General', 'female', 'dfdv', 8920660469, 'hasanhashir1314@gmail.com', 0, 'dfdvfg', '2019-04-17', ' 2019-04-11', 'no', 3, 2, 2, 1, 5, 2);
 
 --
 -- Indexes for dumped tables
@@ -261,7 +229,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables

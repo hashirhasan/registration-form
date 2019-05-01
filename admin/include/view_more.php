@@ -97,9 +97,9 @@
    if(!$result_postgrad){
        die("query failed". mysqli_error($connection));
    }
-	  $row_postgrad=mysqli_fetch_assoc($result_postgrad);
-	  if( $row_postgrad>0)
+		if( mysqli_num_rows($result_postgrad)>0)
 	  {
+	 
     while($row_postgrad=mysqli_fetch_assoc($result_postgrad))                // used for showing the details of the users
     {    
    $userid_postgrad=$row_postgrad['user_fk'];
@@ -107,20 +107,20 @@
    $board_postgrad=$row_postgrad['educationalboard'];
    $mode_postgrad=$row_postgrad['mode'];
    $yearofpassing_postgrad=$row_postgrad['yearofpassing'];
-   $medofins_grad=$row_postgrad['mediumofinstruction'];
+   $medofins_postgrad=$row_postgrad['mediumofinstruction'];
    $marks_postgrad=$row_postgrad['percentageofmarks'];
     }
    
 	  }
-	  
+	 
 	$query_phd="SELECT * FROM phd_qualification WHERE user_fk=$userid ";
    $result_phd=mysqli_query($connection,$query_phd);
    if(!$result_phd){
        die("query failed". mysqli_error($connection));
    }
-	  $row_phd=mysqli_fetch_assoc($result_phd);
-	  if( $row_phd>0)
+		if( mysqli_num_rows($result_phd)>0)
 	  {
+	 
     while($row_phd=mysqli_fetch_assoc($result_phd))                // used for showing the details of the users
     {    
    $userid_phd=$row_phd['user_fk'];
@@ -139,9 +139,9 @@
    if(!$result_other){
        die("query failed". mysqli_error($connection));
    }
-	  $row_other=mysqli_fetch_assoc($result_phd);
-	  if( $row_other>0)
+	 	if( mysqli_num_rows($result_other)>0)
 	  {
+	 
     while($row_other=mysqli_fetch_assoc($result_other))                // used for showing the details of the users
     {    
    $userid_other=$row_other['user_fk'];
@@ -170,7 +170,7 @@
 <form class="fit"  method="POST">
         <div class="form-row">
                 <div class="form-group col-md-4">
-                <label for="inputPost">Post</label>
+                <label for="inputPost">Post<span>*</span></label>
                 <input  class="form-control" type="text"  value="<?php echo $post; ?>"  readonly/>
              
               </div>
@@ -179,7 +179,7 @@
                 <div class="form-row">
                         
                   <div class="form-group col-md-4">
-                    <label for="inputName1"> Name</label>
+                    <label for="inputName1"> Name<span>*</span></label>
                     <input id="name" class="form-control" type="text"  value="<?php echo $name; ?>"  readonly/>
                 
                   </div>
@@ -189,7 +189,7 @@
 
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                            <label for="inputName5">Father's Name </label>
+                            <label for="inputName5">Father's Name <span>*</span></label>
                             <input type="text" class="form-control"  value="<?php echo $father_name; ?>"  readonly>
                            
                     </div>
@@ -204,12 +204,12 @@
 
                 <div class="form-row">
                         <div class="form-group col-md-4">
-                                <label for="inputCategory">Caste/Category</label>
+                                <label for="inputCategory">Caste/Category<span>*</span></label>
                                 <input type="text" class="form-control"  value="<?php echo $cast; ?>"  readonly>
                               </div>
                            
                         <div class="form-group col-md-4">
-                                <label for="inputEmail">Email </label>
+                                <label for="inputEmail">Email<span>*</span> </label>
                                 <input type="text" class="form-control"  value="<?php echo $email; ?>"  readonly>
                               
                         </div>
@@ -219,13 +219,13 @@
 
                 <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputAddress">Corresponding Address</label>
+                  <label for="inputAddress">Corresponding Address<span>*</span></label>
                   <textarea class="form-control" readonly><?php echo $corresponding_address; ?></textarea>
                   
                 </div>
               
                 <div class="form-group col-md-4">
-                        <label for="inputAddress">Permanent Address</label>
+                        <label for="inputAddress">Permanent Address<span>*</span></label>
                         <textarea class="form-control" readonly><?php echo $permanent_address; ?></textarea>
                     
                   </div>
@@ -233,12 +233,12 @@
         
             <div class="form-row">
             <div class="form-group col-md-4">
-                    <label for="inputDate">Date of Birth</label>
+                    <label for="inputDate">Date of Birth<span>*</span></label>
                     <input type="text" class="form-control"  value="<?php echo $date_of_birth; ?>"  readonly>
                    </div>
                   
                    <div class="form-group col-md-4">
-                        <p style="font-weight:600;color:#333333">Gender</p>
+                        <p style="font-weight:600;color:#333333">Gender<span>*</span></p>
                       
                         <input type="text" class="form-control"  value="<?php echo $gender; ?>"  readonly>
                                   </div>
@@ -247,7 +247,7 @@
 
                 <div class="form-row">
                         <div class="form-group col-md-4">
-                                <label for="inputNumber1">Mobile Number</label>
+                                <label for="inputNumber1">Mobile Number<span>*</span></label>
                                 <input type="text" class="form-control"  value="<?php echo $contact; ?>" readonly>
                
                         </div>
@@ -273,7 +273,7 @@
 
                         
                        <div class="form-row">
-                            <h4 style="font-weight:600;color:black;">Qualifications</h4>
+                            <h4 style="font-weight:600;color:black;">Qualifications<span>*</span></h4>
                             <div style="overflow-x:auto">
                        
                               <table class="form1" >

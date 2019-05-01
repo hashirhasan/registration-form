@@ -1,9 +1,63 @@
 $(document).ready(function () {
 
-    
+     $('#year10').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
 
+   $('#year12').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#yeargrad').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#yearpostgrad').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	   $('#yearphd').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#yearother').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	
+	     $('#percent10').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
 
-
+   $('#percent12').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#percentgrad').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#percentpostgrad').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	   $('#percentphd').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
+	
+	   $('#percentother').on('keyup', function() {
+    newval = $(this).val().replace(/[^0-9.]/g, "");
+    $(this).val(newval);
+});
  
     function validate_post() {
         var post = $('#post').val();
@@ -309,7 +363,6 @@ function validate_marriage() {
 	
 
 	$('#post').focus(function () {
-	console.log('hello');
 	$('#err_post').hide();
 	});
 	$('#post').blur(function () {
