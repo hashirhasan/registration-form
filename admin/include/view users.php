@@ -48,6 +48,9 @@ table.gridtable td {
 
 
 </style>
+   <form action="excel.php" method="post">
+<button type="submit" name="submit">Excel_export</button>
+</form>
 
                 <table  style="table-layout:fixed;" class="gridtable" >
                     <thead>
@@ -99,25 +102,18 @@ table.gridtable td {
                             
     
                             echo"<td><a href='users.php?source=view_more&user_id={$user_id}'>View More</a></td>";// link for editing the details of the user
-                           echo"<td ><a onClick=\"javascript: return confirm('Are you sure you want to delete this post?');\" href='users.php?delete={$user_id}'>Delete</a></td>"; 
+                           echo"<td ><a onClick=\"javascript: return confirm('Are you sure you want to delete this registration?');\" href='users.php?delete={$user_id}'>Delete</a></td>"; 
                         
-                            // echo"<td>";
-                            //  if($_SESSION['user_id']!==$user_id )
-                            //        {
-                            //          echo  "<a onClick=\"javascript: return confirm('Are you sure you want to delete this user?');\" href='users.php?delete={$user_id}'>Delete</a>";// link for deletion 
-                            //            }
-                            //            echo"</td>";
+                             echo"</td>";
                           
-                            //  echo"</tr>";
+                              echo"</tr>";
                             
                         }
                         
                     ?>
                     </tbody>
                     </table>
-   <form action="excel.php" method="post">
-<button type="submit" name="submit">Excel_export</button>
-</form>
+
       <?php 
                      if(isset($_GET['delete']))
                         {

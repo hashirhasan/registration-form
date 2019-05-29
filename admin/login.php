@@ -1,6 +1,8 @@
-<?php include "../connect.php" ?>
-<?php session_start();?>
-<?php  
+<?php 
+session_start();
+
+ include "../connect.php";
+ 
 if(isset($_SESSION['user_role']))
 {
    header("Location:index.php");
@@ -43,7 +45,7 @@ if(isset($_POST['login_user']))
       $_SESSION['username']= $enter_username;
       $_SESSION['user_password']= $enter_password;
 	  $_SESSION['user_role']= $user_role;
-      header("Location:index.php");   
+	  echo "<script type='text/javascript'>window.top.location='index.php';</script>";
   }
 else
    {

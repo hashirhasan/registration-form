@@ -1,4 +1,6 @@
-<?php include "include/admin_header.php" ?>
+<?php 
+session_start();
+include "include/admin_header.php" ?>
    
 <!--            <div class="row">-->
               

@@ -1,4 +1,7 @@
-<?php include "include/admin_header.php"?>    <!--navbar of the admin page  -->
+<?php 
+@ob_start();
+ session_start();
+include "include/admin_header.php"?>    <!--navbar of the admin page  -->
   
   <?php
       
@@ -14,7 +17,7 @@
   <h1>Total Registrations:<span  style="color:red;"><?php echo $data_user['total']; ?></span></h1>
   </div>
   <div class="col-4">
-  
+   
   </div>
   </div>
   </div>

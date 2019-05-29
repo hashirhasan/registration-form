@@ -1,6 +1,5 @@
-<?php session_start(); ?>
-<?php session_destroy(); ?>                 <!--for ending the session  -->
-<?php
+<?php session_start(); 
+ session_destroy();
 
 header("Location:./login.php");       //updating the location
 ?>

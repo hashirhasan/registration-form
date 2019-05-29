@@ -1,17 +1,16 @@
- <?php include"../connect.php" ?>     <!--for making connection with database -->
-<?php ob_start(); ?>
-<?php session_start(); ?>                           <!-- //starting the session  --->
+
 <?php 
-if(isset($_SESSION['user_role']))
+ 
+
+include"../connect.php";
+
+if(!isset($_SESSION['user_role']))
 {
- if($_SESSION['user_role']!=='admin')
-   header("Location:./login.php");
+ 
+  header("location: ./login.php");
     
 }
-else if(!isset($_SESSION['user_role']))
-{
-    header("Location:./login.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html>
